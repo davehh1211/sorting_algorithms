@@ -3,7 +3,7 @@
 * bubble_sort - fulfill the bubble sort of sorting algorythms
 * @array: the array to be sorted
 * @size: the size of the array
-* Return: nothing, void.
+* Return: nothing, void
 */
 void bubble_sort(int *array, size_t size)
 {
