@@ -1,6 +1,5 @@
 #ifndef HOLBERTON_SORTED
 #define HOLBERTON_SORTED
-#include <stdio.h>
 #include <stdlib.h>
 
 
