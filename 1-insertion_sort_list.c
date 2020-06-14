@@ -9,12 +9,11 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *tmp;
 
-	tmp = (*list)->next;
-
-	if (list == NULL || !list || (*list)->next == NULL)
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
 	{
 		return;
 	}
+	tmp = (*list)->next;
 	while (tmp)
 	{
 		while (tmp->prev && tmp->prev->n > tmp->n)
