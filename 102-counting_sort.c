@@ -56,14 +56,10 @@ void counting_sort(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 	count = _calloc(maximum + 1, sizeof(int));
-	if (count == NULL)
-		return;
 	arr = _calloc(size + 1, sizeof(int));
-	if (arr == NULL)
-		return;
 
 	for (i = 0; i < size; i++) /*starts the count*/
-		++count[array[i]];
+		count[array[i]]++;
 
 	for (idx = 1; idx <= maximum; idx++) /*it counts the occurences*/
 		count[idx] += count[idx - 1];
@@ -74,7 +70,7 @@ void counting_sort(int *array, size_t size)
 		arr[count[array[i]] - 1] = array[i];
 		count[array[i]]--;
 	}
-	for (i = 0; i < size; ++i)
+	for (i = 0; i < size; i++)
 		array[i] = arr[i];
 
 	free(arr);
