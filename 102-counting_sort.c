@@ -51,7 +51,7 @@ int maxi(int *array, size_t size)
  */
 void counting_sort(int *array, size_t size)
 {
-	unsigned int i; 
+	unsigned int i;
 	int idx, *arr, *count;
 	int maximum = maxi(array, size);
 
@@ -68,7 +68,7 @@ void counting_sort(int *array, size_t size)
 	for (idx = 1; idx <= maximum; idx++) /*it counts the occurences*/
 		count[idx] += count[idx - 1];
 	print_array(count, maximum + 1);
-	
+
 	for (i = 0; i < size; ++i)
 	{
 		arr[count[array[i]] - 1] = array[i];
@@ -76,7 +76,7 @@ void counting_sort(int *array, size_t size)
 	}
 	for (i = 0; i < size; ++i)
 		array[i] = arr[i];
-	
+
 	free(arr);
 	free(count);
 }
