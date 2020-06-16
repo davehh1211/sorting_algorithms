@@ -33,12 +33,10 @@ int maxi(int *array, size_t size)
 	unsigned int i = 0;
 	int maximum = array[0];
 
-	for (i = 1; i < size; i++)
+	for (i = 0; i < size; i++)
 	{
 		if (array[i] > maximum)
-		{
 			maximum = array[i];
-		}
 	}
 	return (maximum);
 }
@@ -51,13 +49,13 @@ int maxi(int *array, size_t size)
  */
 void counting_sort(int *array, size_t size)
 {
-	unsigned int i;
+	size_t i;
 	int idx, *arr, *count;
 	int maximum = maxi(array, size);
 
 	if (array == NULL || size < 2)
 		return;
-	count = _calloc(maximum + 1, sizeof(int)); /*only malloc*/
+	count = _calloc(maximum + 1, sizeof(int));
 	if (count == NULL)
 		return;
 	arr = _calloc(size + 1, sizeof(int));
