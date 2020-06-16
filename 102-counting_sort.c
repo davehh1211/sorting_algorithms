@@ -30,8 +30,8 @@ void *_calloc(unsigned int nmemb, unsigned int size)
  */
 int maxi(int *array, size_t size)
 {
-	unsigned int i = 0;
-	int maximum = array[0];
+	size_t i = 0;
+	int maximum = 0;
 
 	for (i = 0; i < size; i++)
 	{
