@@ -29,7 +29,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
  * @n: size of the array
  * Return: integer
  */
-int getMax(int arr[], unsigned int n)
+int Max(int arr[], unsigned int n)
 {
 	int mx = arr[0];
 	unsigned int i;
@@ -49,7 +49,7 @@ int getMax(int arr[], unsigned int n)
  * @size: size of the array
  * Return: void
  */
-void countSort(int *array, int size, int exp)
+void sortingcount(int *array, int size, int exp)
 {
 	int *output = NULL; /*output array*/
 	int i;
@@ -76,7 +76,6 @@ void countSort(int *array, int size, int exp)
 	/*contains sorted numbers according to current digit*/
 	for (i = 0; i < size; i++)
 		array[i] = output[i];
-	print_array(array, size);
 	free(output);
 }
 /**
@@ -88,17 +87,20 @@ void countSort(int *array, int size, int exp)
 void radix_sort(int *array, size_t size)
 {
 	/*Find the maximum number to know number of digits*/
-	int max = getMax(array, size);
-	int exp, *output;
+	int max = Max(array, size);
+	int exp;
 
 	if (array == NULL || size < 2)
 		return;
 	/*Do counting sort for every digit. Note that instead */
 	/*of passing digit number, exp is passed. exp is 10^i */
 	/*where i is current digit number */
-	output = malloc(sizeof(size));
+	/*output = malloc(sizeof(size));
 	if (output == '\0')
-		return;
+		return;*/
 	for (exp = 1; max / exp > 0; exp *= 10)
-		countSort(array, size, exp);
+	{
+		sortingcount(array, size, exp);
+		print_array(array, size);
+	}
 }
