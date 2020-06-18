@@ -56,7 +56,7 @@ void countSort(int *array, int size, int exp)
 	int count[10] = {0};
 
     /*Store count of occurrences in count[]*/
-	output = _calloc(size + 1, sizeof(int));
+	output = malloc(size * sizeof(int));
 	for (i = 0; i < size; i++)
 		count[(array[i] / exp) % 10]++;
 
@@ -89,13 +89,16 @@ void radix_sort(int *array, size_t size)
 {
 	/*Find the maximum number to know number of digits*/
 	int max = getMax(array, size);
-	int exp;
+	int exp, *output;
 
 	if (array == NULL || size < 2)
 		return;
 	/*Do counting sort for every digit. Note that instead */
 	/*of passing digit number, exp is passed. exp is 10^i */
 	/*where i is current digit number */
+	output = malloc(sizeof(size));
+	if (output == '\0')
+		return;
 	for (exp = 1; max / exp > 0; exp *= 10)
 		countSort(array, size, exp);
 }
