@@ -1,7 +1,7 @@
 #include "sort.h"
 
 /**
- * getMax - A utility function to get maximum value in arr[]
+ * Max - A utility function to get maximum value in arr[]
  * @arr: array to get maximum
  * @n: size of the array
  * Return: integer
@@ -23,6 +23,7 @@ int Max(int arr[], unsigned int n)
  * sortingcount - A function to do counting sort of arr[] according to
  * @array: array to sort
  * @exp: exponent
+ * @output: array to allocate info
  * @size: size of the array
  * Return: void
  */
