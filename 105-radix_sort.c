@@ -1,27 +1,4 @@
 #include "sort.h"
-/**
- * _calloc - Write a function that allocates memory for an array
- * @nmemb: variable
- * @size: size of the array
- * Return: nothing
- */
-void *_calloc(unsigned int nmemb, unsigned int size)
-{
-	unsigned int i;
-	char *av;
-
-	if (nmemb == 0 || size == 0)
-		return (NULL);
-
-	av = malloc(nmemb * size);
-	if (av == NULL)
-		return (NULL);
-	for (i = 0; i < (nmemb * size); i++)
-	{
-		av[i] = '\0';
-	}
-	return (av);
-}
 
 /**
  * getMax - A utility function to get maximum value in arr[]
@@ -43,20 +20,18 @@ int Max(int arr[], unsigned int n)
 }
 
 /**
- * countSort - A function to do counting sort of arr[] according to
+ * sortingcount - A function to do counting sort of arr[] according to
  * @array: array to sort
  * @exp: exponent
  * @size: size of the array
  * Return: void
  */
-void sortingcount(int *array, int size, int exp)
+void sortingcount(int *array, int size, int exp, int *output)
 {
-	int *output = NULL; /*output array*/
 	int i;
 	int count[10] = {0};
 
     /*Store count of occurrences in count[]*/
-	output = malloc(size * sizeof(int));
 	for (i = 0; i < size; i++)
 		count[(array[i] / exp) % 10]++;
 
@@ -76,7 +51,6 @@ void sortingcount(int *array, int size, int exp)
 	/*contains sorted numbers according to current digit*/
 	for (i = 0; i < size; i++)
 		array[i] = output[i];
-	free(output);
 }
 /**
  * radix_sort - radix sort
@@ -87,20 +61,23 @@ void sortingcount(int *array, int size, int exp)
 void radix_sort(int *array, size_t size)
 {
 	/*Find the maximum number to know number of digits*/
-	int max = Max(array, size);
-	int exp;
+	int max = 0;
+	int exp, *output = '\0';
 
-	if (array == NULL || size < 2)
+	if (array == '\0' || size < 2)
 		return;
 	/*Do counting sort for every digit. Note that instead */
 	/*of passing digit number, exp is passed. exp is 10^i */
 	/*where i is current digit number */
-	/*output = malloc(sizeof(size));
+	/*output = malloc(sizeof(size));*/
+	max = Max(array, size);
+	output = malloc(size * sizeof(int));
 	if (output == '\0')
-		return;*/
+		return;
 	for (exp = 1; max / exp > 0; exp *= 10)
 	{
-		sortingcount(array, size, exp);
+		sortingcount(array, size, exp, output);
 		print_array(array, size);
 	}
+	free(output);
 }
